@@ -5,4 +5,7 @@
 
     <string name="restaurant_options_menu_sort">Sort</string>
 
+    <!--
+    <string name="yelp_fusion_api_key">ADD YOUR API KEY HERE</string>
+    -->
 </resources>

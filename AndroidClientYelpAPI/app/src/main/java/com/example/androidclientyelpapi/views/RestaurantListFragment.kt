@@ -45,14 +45,16 @@ class RestaurantListFragment : Fragment() {
 
         viewModel.selectedRestaurantIndex.observe(viewLifecycleOwner, Observer {index ->
             index.takeIf { it != -1 }?.let {
-                viewModel.fetchReview(index)
+                viewModel.fetchReview(
+                    getString(R.string.yelp_fusion_api_key),
+                    index)
                 findNavController().navigate(RestaurantListFragmentDirections.actionRestaurantListFragmentToRestaurantDetailsFragment())
             }
         })
 
         binding.searchBtn.setOnClickListener {
             binding.searchTxt.text.takeIf { it.isNotBlank() }?.let {
-                viewModel.updateRestaurantList(it.toString())
+                viewModel.updateRestaurantList(getString(R.string.yelp_fusion_api_key), it.toString())
             }
         }
 
@@ -67,7 +69,6 @@ class RestaurantListFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        val inflater: MenuInflater = inflater
         inflater.inflate(R.menu.restaurant_menu, menu)
     }
 

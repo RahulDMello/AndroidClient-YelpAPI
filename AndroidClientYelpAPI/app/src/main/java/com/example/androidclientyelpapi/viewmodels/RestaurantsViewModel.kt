@@ -5,25 +5,34 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.androidclientyelpapi.service.RestaurantsRepository
 import com.example.androidclientyelpapi.service.models.Restaurant
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class RestaurantsViewModel: ViewModel() {
+    private val scope = CoroutineScope(Dispatchers.IO)
+
     private val _restaurants = MutableLiveData<List<Restaurant>>()
-
-    val selectedRestaurantIndex = MutableLiveData<Int>()
-
-    val selectedRestaurant: Restaurant?
-        get() = _restaurants.value?.getOrNull(selectedRestaurantIndex.value ?: 0)
-
     val restaurants: LiveData<List<Restaurant>>
         get() = _restaurants
 
-    fun updateRestaurantList(keyWord: String) {
-        _restaurants.postValue(RestaurantsRepository.getRestaurants(keyWord).sortedBy { it.name })
+    val selectedRestaurantIndex = MutableLiveData<Int>()
+
+    private val _selectedRestaurant = MutableLiveData<Restaurant>()
+    val selectedRestaurant: LiveData<Restaurant>
+        get() = _selectedRestaurant
+
+    fun updateRestaurantList(authorization: String, keyWord: String) {
+        _restaurants.postValue(RestaurantsRepository.getRestaurants(authorization, keyWord).sortedBy { it.name })
     }
 
-    fun fetchReview(index: Int) {
-        _restaurants.value?.let {list ->
-            list[index].review = RestaurantsRepository.getReview(list[index])
+    fun fetchReview(authorization: String, index: Int) {
+        scope.launch {
+            _restaurants.value?.let {list ->
+                list[index].review = RestaurantsRepository.getReview(authorization, list[index])
+                _selectedRestaurant.postValue(list[index])
+            }
         }
     }
 
