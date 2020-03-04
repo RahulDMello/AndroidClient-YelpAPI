@@ -6,5 +6,6 @@ data class Restaurant (
     val imgUrl: String,
     val address: String,
     val rating: Float,
-    val review: Review
+    var review: Review? = null,
+    val favourite: Boolean = false
 )

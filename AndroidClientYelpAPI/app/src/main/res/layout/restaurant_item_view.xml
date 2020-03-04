@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.example.androidclientyelpapi.service.models.Restaurant" />
+
+    </data>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/primaryLightColor"
+        app:cardCornerRadius="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="15dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:text="@{item.name}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryColor"
+                android:paddingStart="20dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="15dp"
+                android:singleLine="false"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:accessibilityHeading="true"
+                tools:text="Rahul's Todo 1: " />
+
+            <TextView
+                android:id="@+id/todo1"
+                android:text="@{item.address}"
+                android:singleLine="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondaryTextColor"
+                android:padding="10dp"
+                android:textColor="@color/secondaryColor"
+                android:textSize="18sp"
+                tools:text="Get this app working" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
