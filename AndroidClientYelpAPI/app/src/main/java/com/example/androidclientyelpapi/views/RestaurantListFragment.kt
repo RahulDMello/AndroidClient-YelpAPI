@@ -1,21 +1,25 @@
 package com.example.androidclientyelpapi.views
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.androidclientyelpapi.R
 import com.example.androidclientyelpapi.databinding.FragmentRestaurantListBinding
 import com.example.androidclientyelpapi.tools.RestaurantsAdapter
 import com.example.androidclientyelpapi.viewmodels.RestaurantsViewModel
 
+
 class RestaurantListFragment : Fragment() {
 
     private val viewModel: RestaurantsViewModel by activityViewModels()
+    private lateinit var searchTextView: TextView
+    private lateinit var restaurantsRecyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentRestaurantListBinding.inflate(inflater)
@@ -52,7 +56,35 @@ class RestaurantListFragment : Fragment() {
             }
         }
 
+        searchTextView = binding.searchTxt
+
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        val inflater: MenuInflater = inflater
+        inflater.inflate(R.menu.restaurant_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.favourites -> {
+                searchTextView.text = ""
+                viewModel.fetchFavourites()
+                true
+            }
+            R.id.sort -> {
+                viewModel.reverseRestaurantList()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onDestroyView() {

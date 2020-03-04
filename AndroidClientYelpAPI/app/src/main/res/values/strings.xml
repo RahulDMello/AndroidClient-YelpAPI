@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">AndroidClientYelpAPI</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="restaurant_options_menu_favourites">Favourites</string>
+
+    <string name="restaurant_options_menu_sort">Sort</string>
+
 </resources>

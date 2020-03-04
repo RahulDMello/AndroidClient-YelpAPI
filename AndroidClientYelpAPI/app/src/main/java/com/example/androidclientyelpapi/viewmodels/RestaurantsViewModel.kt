@@ -18,13 +18,21 @@ class RestaurantsViewModel: ViewModel() {
         get() = _restaurants
 
     fun updateRestaurantList(keyWord: String) {
-        _restaurants.postValue(RestaurantsRepository.getRestaurants(keyWord))
+        _restaurants.postValue(RestaurantsRepository.getRestaurants(keyWord).sortedBy { it.name })
     }
 
     fun fetchReview(index: Int) {
         _restaurants.value?.let {list ->
             list[index].review = RestaurantsRepository.getReview(list[index])
         }
+    }
+
+    fun fetchFavourites() {
+        _restaurants.postValue(RestaurantsRepository.getFavouriteRestaurants().sortedBy { it.name })
+    }
+
+    fun reverseRestaurantList() {
+        _restaurants.postValue(_restaurants.value?.reversed())
     }
 
 }
