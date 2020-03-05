@@ -13,6 +13,8 @@ import kotlinx.coroutines.launch
 class RestaurantsViewModel: ViewModel() {
     private val scope = CoroutineScope(Dispatchers.IO)
 
+    private var isSortAscending = true
+
     private val _restaurants = MutableLiveData<List<Restaurant>>()
     val restaurants: LiveData<List<Restaurant>>
         get() = _restaurants
@@ -46,7 +48,10 @@ class RestaurantsViewModel: ViewModel() {
     }
 
     fun fetchFavourites() {
-        _restaurants.postValue(RestaurantsRepository.getFavouriteRestaurants().sortedBy { it.name })
+        _restaurants.postValue(RestaurantsRepository
+            .getFavouriteRestaurants().apply{
+                if (isSortAscending) sortedBy { it.name } else sortedByDescending { it.name }
+            })
     }
 
     fun updateFavourite(restaurant: Restaurant?, isFavourite: Boolean) {
@@ -58,6 +63,7 @@ class RestaurantsViewModel: ViewModel() {
 
     fun reverseRestaurantList() {
         _restaurants.postValue(_restaurants.value?.reversed())
+        isSortAscending = !isSortAscending
     }
 
 }
