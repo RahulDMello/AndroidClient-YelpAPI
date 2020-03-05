@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/secondaryColor</item>
     </style>
 
+
+    <style name="toggleButton" parent="android:Theme.Black">
+        <item name="android:textOn"></item>
+        <item name="android:textOff"></item>
+    </style>
+
 </resources>

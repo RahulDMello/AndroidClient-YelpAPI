@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidclientyelpapi.R
 import com.example.androidclientyelpapi.databinding.RestaurantItemViewBinding
 import com.example.androidclientyelpapi.service.models.Restaurant
 
@@ -38,6 +39,8 @@ class RestaurantViewHolder(private val binding: RestaurantItemViewBinding) :
         binding.card.setOnClickListener {
             onItemClick(position)
         }
+        if(item.isFavourite)
+            binding.title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_star_filled, 0)
     }
 
     companion object {

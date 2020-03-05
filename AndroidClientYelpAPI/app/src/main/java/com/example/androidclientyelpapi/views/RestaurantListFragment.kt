@@ -43,6 +43,10 @@ class RestaurantListFragment : Fragment() {
             restaurants?.let {
                 adapter.submitList(it)
                 adapter.notifyDataSetChanged()
+
+                if(it.isNullOrEmpty()) {
+                    Toast.makeText(requireContext(), "No Restaurants found", Toast.LENGTH_SHORT).show()
+                }
             }
         })
 

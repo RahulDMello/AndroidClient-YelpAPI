@@ -30,9 +30,6 @@ object SavedLocation {
                     _isUpdating.postValue(false)
                 }
             }
-            .addOnFailureListener {
-                val message = it.message
-            }
     }
 
 }

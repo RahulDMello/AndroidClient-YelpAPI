@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-
+import com.example.androidclientyelpapi.service.SharedPreferenceManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
         checkPermission()
+        SharedPreferenceManager.init(applicationContext)
     }
 
     override fun onSupportNavigateUp(): Boolean {

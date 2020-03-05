@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ToggleButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -24,11 +25,16 @@ class RestaurantDetailsFragment : Fragment() {
 
         viewModel.selectedRestaurant.observe(viewLifecycleOwner, Observer { restaurant ->
             binding.item = restaurant
-            Glide
-                .with(this)
-                .load(Uri.parse(restaurant.imageUrl))
-                .into(restaurantImage)
+            if(restaurant.imageUrl != null)
+                Glide
+                    .with(this)
+                    .load(Uri.parse(restaurant.imageUrl))
+                    .into(binding.restaurantImage)
         })
+
+        binding.favouriteToggle.setOnClickListener {view ->
+            viewModel.updateFavourite(viewModel.selectedRestaurant.value, (view as ToggleButton).isChecked)
+        }
 
         return binding.root
     }

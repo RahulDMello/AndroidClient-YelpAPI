@@ -49,7 +49,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:singleLine="false"
             android:text="@{item.review.comment}" />
+
+        <ToggleButton
+            android:id="@+id/favourite_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            style="@style/toggleButton"
+            android:textOff="Add to favourite"
+            android:textOn="Remove from Favourite"
+            android:checked="@={item.favourite}"
+            android:background="@android:color/transparent"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/star_selector"/>
     </LinearLayout>
 
 </layout>

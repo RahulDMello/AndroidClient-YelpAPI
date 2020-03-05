@@ -9,7 +9,6 @@ import com.example.androidclientyelpapi.tools.SavedLocation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class RestaurantsViewModel: ViewModel() {
     private val scope = CoroutineScope(Dispatchers.IO)
@@ -47,6 +46,13 @@ class RestaurantsViewModel: ViewModel() {
 
     fun fetchFavourites() {
         _restaurants.postValue(RestaurantsRepository.getFavouriteRestaurants().sortedBy { it.name })
+    }
+
+    fun updateFavourite(restaurant: Restaurant?, isFavourite: Boolean) {
+        restaurant?.let {
+            it.isFavourite = isFavourite
+            RestaurantsRepository.updateFavourite(it)
+        }
     }
 
     fun reverseRestaurantList() {
