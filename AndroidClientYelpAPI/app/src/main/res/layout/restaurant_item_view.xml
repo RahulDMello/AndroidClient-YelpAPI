@@ -2,12 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="item"
             type="com.example.androidclientyelpapi.service.models.Restaurant" />
 
     </data>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="match_parent"
@@ -19,37 +22,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_margin="15dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/title"
-                android:text="@{item.name}"
+                style="@style/TitleTextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/secondaryColor"
+                android:accessibilityHeading="true"
                 android:paddingStart="10dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="5dp"
                 android:singleLine="false"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:accessibilityHeading="true"
+                android:text="@{item.name}"
                 tools:text="Title" />
 
             <TextView
-                android:id="@+id/todo1"
-                android:text="@{item.address}"
-                android:singleLine="false"
+                style="@style/SecondaryTextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/secondaryTextColor"
                 android:padding="10dp"
-                android:textColor="@color/secondaryColor"
-                android:textSize="18sp"
+                android:singleLine="false"
+                android:text="@{item.address}"
                 tools:text="Get this app working" />
 
         </LinearLayout>

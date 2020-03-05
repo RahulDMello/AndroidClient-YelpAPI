@@ -14,55 +14,66 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        
+
         <TextView
-            android:layout_width="wrap_content"
+            style="@style/TitleTextAppearance"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@{item.name}" />
-        
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="@{item.name}"
+            tools:text="Title" />
+
         <ImageView
             android:id="@+id/restaurantImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxHeight="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
             android:adjustViewBounds="true"
-            android:layout_gravity="center_horizontal"
             android:contentDescription="@{item.name + ` image`}"
-            tools:src="@drawable/ic_launcher_background"/>
+            android:maxHeight="200dp"
+            tools:src="@drawable/ic_launcher_background" />
 
         <TextView
-            android:layout_width="wrap_content"
+            style="@style/RegularTextAppearance"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
             android:singleLine="false"
-            android:layout_gravity="center_horizontal"
-            android:text="@{item.address}"/>
+            android:text="@{item.address}" />
 
         <TextView
-            android:layout_width="wrap_content"
+            style="@style/RegularTextAppearance"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:text="@{item.review.userName}"
-            android:contentDescription="@{`user` + item.review.userName}" />
+            android:layout_marginTop="10dp"
+            android:contentDescription="@{`user` + item.review.userName}"
+            android:gravity="start"
+            android:text="@{item.review.userName}" />
 
         <TextView
-            android:layout_width="wrap_content"
+            style="@style/RegularTextAppearance"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:layout_marginBottom="10dp"
+            android:gravity="start"
             android:singleLine="false"
             android:text="@{item.review.comment}" />
 
         <ToggleButton
             android:id="@+id/favourite_toggle"
+            style="@style/RegularTextAppearance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:textOff="Add to favourite"
-            android:textOn="Remove from Favourite"
             android:checked="@={item.favourite}"
-            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/star_selector"
             android:drawablePadding="5dp"
-            android:drawableStart="@drawable/star_selector"/>
+            android:padding="5dp"
+            android:textOff="@string/favourite_toggle_textOff"
+            android:textOn="@string/favourite_toggle_textOn" />
     </LinearLayout>
 
 </layout>

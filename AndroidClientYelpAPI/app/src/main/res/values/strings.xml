@@ -4,6 +4,13 @@
     <string name="restaurant_options_menu_favourites">Favourites</string>
 
     <string name="restaurant_options_menu_sort">Sort</string>
+    <string name="favourite_toggle_textOff">Add to favourite</string>
+    <string name="favourite_toggle_textOn">Remove from Favourite</string>
+    <string name="search_textview_hint">Keyword</string>
+    <string name="search_button_text">Search</string>
+    <string name="restaurant_recycler_contentdescription">no restaurants displayed</string>
+    <string name="error_norestaurants">No Restaurants found</string>
+    <string name="error_missingkeyword">Please enter a keyword</string>
 
     <!--
     <string name="yelp_fusion_api_key">ADD YOUR API KEY HERE</string>

@@ -44,7 +44,7 @@ class RestaurantListFragment : Fragment() {
                 adapter.notifyDataSetChanged()
 
                 if(it.isNullOrEmpty()) {
-                    Toast.makeText(requireContext(), "No Restaurants found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.error_norestaurants), Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -62,7 +62,7 @@ class RestaurantListFragment : Fragment() {
             binding.searchTxt.text.takeIf { it.isNotBlank() }?.let {
                 viewModel.updateRestaurantList(getString(R.string.yelp_fusion_api_key), it.toString())
             } ?: run {
-                Toast.makeText(requireContext(), "Please enter a keyword", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.error_missingkeyword), Toast.LENGTH_SHORT).show()
             }
         }
 
