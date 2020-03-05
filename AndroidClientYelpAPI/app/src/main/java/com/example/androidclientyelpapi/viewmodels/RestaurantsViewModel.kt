@@ -33,7 +33,9 @@ class RestaurantsViewModel: ViewModel() {
                     SavedLocation.currentLatitude,
                     SavedLocation.currentLongitude,
                     keyWord
-                ).sortedBy { it.name })
+                ).let{list ->
+                    if (isSortAscending) list.sortedBy { it.name } else list.sortedByDescending { it.name }
+                })
         }
     }
 
@@ -49,8 +51,8 @@ class RestaurantsViewModel: ViewModel() {
 
     fun fetchFavourites() {
         _restaurants.postValue(RestaurantsRepository
-            .getFavouriteRestaurants().apply{
-                if (isSortAscending) sortedBy { it.name } else sortedByDescending { it.name }
+            .getFavouriteRestaurants().let{list ->
+                if (isSortAscending) list.sortedBy { it.name } else list.sortedByDescending { it.name }
             })
     }
 

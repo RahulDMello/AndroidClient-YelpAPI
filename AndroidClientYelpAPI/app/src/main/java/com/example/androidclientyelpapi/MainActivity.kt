@@ -30,7 +30,12 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-    fun checkPermission() {
+
+    /**
+     * Check for ACCESS_COARSE_LOCATION permission.
+     * Since its a higher priority permission, it needs a runtime call on top of manifest declaration
+     */
+    private fun checkPermission() {
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_COARSE_LOCATION

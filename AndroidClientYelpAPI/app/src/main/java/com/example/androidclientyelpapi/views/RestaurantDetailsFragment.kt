@@ -24,6 +24,7 @@ class RestaurantDetailsFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
+        // Do via live data because the details and review fetch is on a different thread (IO thread) and not on UI thread
         viewModel.selectedRestaurant.observe(viewLifecycleOwner, Observer { restaurant ->
             binding.item = restaurant
             if(restaurant.imageUrl != null)

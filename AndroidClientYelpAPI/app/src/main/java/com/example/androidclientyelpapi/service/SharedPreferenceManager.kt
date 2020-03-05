@@ -44,5 +44,4 @@ object SharedPreferenceManager {
 
     private fun Restaurant.getSimpleRestaurant(): Restaurant =
         Restaurant(id, name, address)
-
 }

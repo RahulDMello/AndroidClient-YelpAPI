@@ -10,9 +10,11 @@ object SavedLocation {
     var currentLongitude: Double = -79.38872
 
     private val _isUpdating = MutableLiveData(false)
+
+    // public live data for anyone who might be interested
+    // in knowing if the update is taking place or not
     val isUpdating: LiveData<Boolean>
         get() = _isUpdating
-
 
     private val MaxRetry = 3
 

@@ -27,7 +27,6 @@ interface RestaurantService {
     /**
      *
      * Get restaurant based on id
-     * https://api.yelp.com/v3/businesses/r_BrIgzYcwo1NAuG9dLbpg
      */
     @GET("v3/businesses/{id}")
     fun getRestaurant(
@@ -38,7 +37,6 @@ interface RestaurantService {
     /**
      *
      * Get restaurant suggestions near the given latitude and longitude filtered based on the keyword
-     * https://api.yelp.com/v3/businesses/GYmdm_Vy7sf9tji7WUcohg/reviews
      */
     @GET("v3/businesses/{id}/reviews")
     fun getReview(

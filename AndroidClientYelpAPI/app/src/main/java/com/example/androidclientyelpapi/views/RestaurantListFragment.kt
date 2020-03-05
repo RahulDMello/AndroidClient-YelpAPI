@@ -22,7 +22,6 @@ class RestaurantListFragment : Fragment() {
 
     private val viewModel: RestaurantsViewModel by activityViewModels()
     private lateinit var searchTextView: TextView
-    private lateinit var restaurantsRecyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentRestaurantListBinding.inflate(inflater)
@@ -75,6 +74,7 @@ class RestaurantListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        // Prepare latitude and longitude for Search
         SavedLocation.updateSavedLocation(LocationServices.getFusedLocationProviderClient(requireContext()))
     }
 

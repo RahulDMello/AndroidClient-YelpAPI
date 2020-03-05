@@ -39,6 +39,9 @@ class RestaurantViewHolder(private val binding: RestaurantItemViewBinding) :
         binding.card.setOnClickListener {
             onItemClick(position)
         }
+
+        // Temporary solution to add star.
+        // Might Change to actual imageview since doing this programmatically has issue with maintaining it through screen rotations
         if(item.isFavourite)
             binding.title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_star_filled, 0)
         else
