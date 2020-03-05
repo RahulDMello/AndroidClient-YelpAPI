@@ -1,6 +1,7 @@
 package com.example.androidclientyelpapi.service.network
 
 import com.example.androidclientyelpapi.service.dtos.BusinessDto
+import com.example.androidclientyelpapi.service.dtos.RestaurantDto
 import com.example.androidclientyelpapi.service.dtos.ReviewsDto
 import retrofit2.Call
 import retrofit2.http.GET
@@ -32,7 +33,7 @@ interface RestaurantService {
     fun getRestaurant(
         @Header("Authorization") authorization: String,
         @Path("id") restaurantId: String
-    ): Call<BusinessDto>
+    ): Call<RestaurantDto>
 
     /**
      *

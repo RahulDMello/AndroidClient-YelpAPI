@@ -41,6 +41,8 @@ class RestaurantViewHolder(private val binding: RestaurantItemViewBinding) :
         }
         if(item.isFavourite)
             binding.title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_star_filled, 0)
+        else
+            binding.title.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
     }
 
     companion object {

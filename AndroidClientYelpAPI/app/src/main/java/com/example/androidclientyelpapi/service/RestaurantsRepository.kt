@@ -19,10 +19,14 @@ object RestaurantsRepository {
         val restaurantsDto = RestaurantRestAPIClient.RestaurantService
             .getRestaurants(authorization, latitude, longitude, keyword).awaitResponse().body()?.restaurants
         restaurantsDto?.forEach {
-            restaurants.add(Restaurant.get(it))
+            val restaurant = Restaurant.get(it)
+            restaurant.isFavourite = checkIfFavourite(restaurant)
+            restaurants.add(restaurant)
         }
         return restaurants
     }
+
+    private fun checkIfFavourite(restaurant: Restaurant) = favouritesMap?.contains(restaurant.id) ?: false
 
     fun getFavouriteRestaurants(): List<Restaurant> {
         if (favouritesMap == null)
@@ -50,6 +54,12 @@ object RestaurantsRepository {
     private fun Restaurant.removeFavourite() {
         SharedPreferenceManager.removeRestaurant(this)
         favouritesMap?.remove(id)
+    }
+
+    suspend fun updateRestaurantDetails(authorization: String, restaurant: Restaurant) {
+        val updatedRestaurant = RestaurantRestAPIClient.RestaurantService.getRestaurant(authorization, restaurant.id).awaitResponse().body()
+        restaurant.imageUrl = updatedRestaurant?.imageUrl
+        restaurant.rating = updatedRestaurant?.rating
     }
 
 }

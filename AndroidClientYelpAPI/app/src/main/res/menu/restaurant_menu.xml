@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/favourites"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_star_filled"
         android:title="@string/restaurant_options_menu_favourites"
         app:showAsAction="ifRoom"/>
     <item android:id="@+id/sort"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_sort_up_and_down"
         android:title="@string/restaurant_options_menu_sort"
         app:showAsAction="ifRoom"/>
 </menu>

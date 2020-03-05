@@ -38,6 +38,7 @@ class RestaurantsViewModel: ViewModel() {
     fun fetchReview(authorization: String, index: Int) {
         scope.launch {
             _restaurants.value?.let {list ->
+                RestaurantsRepository.updateRestaurantDetails(authorization, list[index])
                 list[index].review = RestaurantsRepository.getReview(authorization, list[index])
                 _selectedRestaurant.postValue(list[index])
             }

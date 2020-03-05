@@ -7,8 +7,8 @@ data class Restaurant(
     val id: String,
     val name: String,
     val address: String,
-    val imageUrl: String? = null,
-    val rating: Float? = null,
+    var imageUrl: String? = null,
+    var rating: Float? = null,
     @Expose(serialize = false, deserialize = false)
     var isFavourite: Boolean = false,
     var review: Review? = null

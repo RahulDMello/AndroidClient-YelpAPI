@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
+import com.example.androidclientyelpapi.R
 import com.example.androidclientyelpapi.databinding.FragmentRestaurantDetailsBinding
 import com.example.androidclientyelpapi.viewmodels.RestaurantsViewModel
 import kotlinx.android.synthetic.main.fragment_restaurant_details.*
@@ -30,6 +31,8 @@ class RestaurantDetailsFragment : Fragment() {
                     .with(this)
                     .load(Uri.parse(restaurant.imageUrl))
                     .into(binding.restaurantImage)
+            else
+                binding.restaurantImage.setImageResource(R.drawable.ic_food)
         })
 
         binding.favouriteToggle.setOnClickListener {view ->
