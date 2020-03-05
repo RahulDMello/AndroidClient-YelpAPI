@@ -3,6 +3,7 @@ package com.example.androidclientyelpapi.views
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidclientyelpapi.R
 import com.example.androidclientyelpapi.databinding.FragmentRestaurantListBinding
 import com.example.androidclientyelpapi.tools.RestaurantsAdapter
+import com.example.androidclientyelpapi.tools.SavedLocation
 import com.example.androidclientyelpapi.viewmodels.RestaurantsViewModel
+import com.google.android.gms.location.LocationServices
 
 
 class RestaurantListFragment : Fragment() {
@@ -55,6 +58,8 @@ class RestaurantListFragment : Fragment() {
         binding.searchBtn.setOnClickListener {
             binding.searchTxt.text.takeIf { it.isNotBlank() }?.let {
                 viewModel.updateRestaurantList(getString(R.string.yelp_fusion_api_key), it.toString())
+            } ?: run {
+                Toast.makeText(requireContext(), "Please enter a keyword", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -66,6 +71,7 @@ class RestaurantListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        SavedLocation.updateSavedLocation(LocationServices.getFusedLocationProviderClient(requireContext()))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

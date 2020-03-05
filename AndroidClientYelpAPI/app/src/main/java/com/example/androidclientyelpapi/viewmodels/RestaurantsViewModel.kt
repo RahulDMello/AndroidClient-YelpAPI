@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.androidclientyelpapi.service.RestaurantsRepository
 import com.example.androidclientyelpapi.service.models.Restaurant
+import com.example.androidclientyelpapi.tools.SavedLocation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,7 +25,15 @@ class RestaurantsViewModel: ViewModel() {
         get() = _selectedRestaurant
 
     fun updateRestaurantList(authorization: String, keyWord: String) {
-        _restaurants.postValue(RestaurantsRepository.getRestaurants(authorization, keyWord).sortedBy { it.name })
+        scope.launch {
+            _restaurants.postValue(
+                RestaurantsRepository.getRestaurants(
+                    authorization,
+                    SavedLocation.currentLatitude,
+                    SavedLocation.currentLongitude,
+                    keyWord
+                ).sortedBy { it.name })
+        }
     }
 
     fun fetchReview(authorization: String, index: Int) {

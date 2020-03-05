@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.androidclientyelpapi.databinding.FragmentRestaurantDetailsBinding
 import com.example.androidclientyelpapi.viewmodels.RestaurantsViewModel
+import kotlinx.android.synthetic.main.fragment_restaurant_details.*
 
 class RestaurantDetailsFragment : Fragment() {
 
@@ -27,8 +26,8 @@ class RestaurantDetailsFragment : Fragment() {
             binding.item = restaurant
             Glide
                 .with(this)
-                .load(Uri.parse(restaurant.imgUrl))
-                .into(binding.restaurantImage)
+                .load(Uri.parse(restaurant.imageUrl))
+                .into(restaurantImage)
         })
 
         return binding.root
@@ -37,6 +36,7 @@ class RestaurantDetailsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.selectedRestaurant.removeObservers(viewLifecycleOwner)
+        Glide.with(this).clear(restaurantImage)
     }
 
 }

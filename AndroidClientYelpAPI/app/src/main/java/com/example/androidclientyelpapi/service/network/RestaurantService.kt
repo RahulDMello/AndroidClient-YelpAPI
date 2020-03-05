@@ -14,12 +14,12 @@ interface RestaurantService {
      *
      * Get restaurant suggestions near the given latitude and longitude filtered based on the keyword
      */
-    @GET("v3/businesses/search?latitude={lat}&longitude={lon}&keyword={keyword}&limit={limit}")
+    @GET("v3/businesses/search")
     fun getRestaurants(
         @Header("Authorization") authorization: String,
-        @Query("lat") latitude: Double,
-        @Query("lon") longitude: Double,
-        @Query("keyword") keyword: String,
+        @Query("latitude") latitude: Double,
+        @Query("longitude") longitude: Double,
+        @Query("term") keyword: String,
         @Query("limit") limit: Int = 10
     ): Call<BusinessDto>
 

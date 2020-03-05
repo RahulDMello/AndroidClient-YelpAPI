@@ -3,7 +3,7 @@ package com.example.androidclientyelpapi.service.dtos
 import com.google.gson.annotations.SerializedName
 
 data class BusinessDto (
-    @SerializedName("Businesses")
+    @SerializedName("businesses")
     val restaurants: List<RestaurantDto>
 )
 
