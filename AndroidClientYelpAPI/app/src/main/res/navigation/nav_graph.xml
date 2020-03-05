@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/restaurantListFragment"
         android:name="com.example.androidclientyelpapi.views.RestaurantListFragment"
-        android:label="fragment_restaurant_list"
+        android:label="List of Places"
         tools:layout="@layout/fragment_restaurant_list">
         <action
             android:id="@+id/action_restaurantListFragment_to_restaurantDetailsFragment"
@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/restaurantDetailsFragment"
         android:name="com.example.androidclientyelpapi.views.RestaurantDetailsFragment"
-        android:label="fragment_restaurant_details"
+        android:label="Details"
         tools:layout="@layout/fragment_restaurant_details" />
 </navigation>
