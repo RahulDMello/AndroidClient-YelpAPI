@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RestaurantsViewModel: ViewModel() {
+class RestaurantsViewModel : ViewModel() {
     private val scope = CoroutineScope(Dispatchers.IO)
 
     private var isSortAscending = true
@@ -25,6 +25,17 @@ class RestaurantsViewModel: ViewModel() {
     val selectedRestaurant: LiveData<Restaurant>
         get() = _selectedRestaurant
 
+    init {
+        selectedRestaurantIndex.observeForever { index ->
+            if (index == -1)
+                _selectedRestaurant.postValue(null)
+            else
+                _restaurants.value?.getOrNull(index)?.let {
+                    _selectedRestaurant.postValue(it)
+                }
+        }
+    }
+
     fun updateRestaurantList(authorization: String, keyWord: String) {
         scope.launch {
             _restaurants.postValue(
@@ -33,7 +44,7 @@ class RestaurantsViewModel: ViewModel() {
                     SavedLocation.currentLatitude,
                     SavedLocation.currentLongitude,
                     keyWord
-                ).let{list ->
+                ).let { list ->
                     if (isSortAscending) list.sortedBy { it.name } else list.sortedByDescending { it.name }
                 })
         }
@@ -41,17 +52,18 @@ class RestaurantsViewModel: ViewModel() {
 
     fun fetchReview(authorization: String, index: Int) {
         scope.launch {
-            _restaurants.value?.let {list ->
+            _restaurants.value?.let { list ->
                 RestaurantsRepository.updateRestaurantDetails(authorization, list[index])
                 list[index].review = RestaurantsRepository.getReview(authorization, list[index])
-                _selectedRestaurant.postValue(list[index])
+                if (list[index].id == _selectedRestaurant.value?.id)
+                    _selectedRestaurant.postValue(list[index])
             }
         }
     }
 
     fun fetchFavourites() {
         _restaurants.postValue(RestaurantsRepository
-            .getFavouriteRestaurants().let{list ->
+            .getFavouriteRestaurants().let { list ->
                 if (isSortAscending) list.sortedBy { it.name } else list.sortedByDescending { it.name }
             })
     }
