@@ -7,30 +7,10 @@ object RestaurantsRepository {
 
     private var favouritesMap: MutableMap<String, Restaurant>? = null
 
-    val restaurants = mutableListOf(Restaurant(
-        "1",
-        "That place",
-        "30 abc dr. Pickering, ON",
-        isFavourite = true,
-        review = Review(
-            "Rahul",
-            "Fantastic place",
-            5
-        )
-    ))
-
-    suspend fun getRestaurants(
-        authorization: String,
-        latitude: Double,
-        longitude: Double,
-        keyword: String): List<Restaurant> {
-        return restaurants
-    }
-
-    fun getFavouriteRestaurants(): List<Restaurant> {
-        return mutableListOf(Restaurant(
+    val restaurants = mutableListOf(
+        Restaurant(
             "1",
-            "That place",
+            "A place",
             "30 abc dr. Pickering, ON",
             isFavourite = true,
             review = Review(
@@ -38,11 +18,58 @@ object RestaurantsRepository {
                 "Fantastic place",
                 5
             )
-        ))
+        ),
+        Restaurant(
+            "2",
+            "B place",
+            "30 abc dr. Pickering, ON",
+            isFavourite = true,
+            review = Review(
+                "Rahul",
+                "Fantastic place",
+                5
+            )
+        ),
+        Restaurant(
+            "3",
+            "C place",
+            "30 abc dr. Pickering, ON",
+            isFavourite = true,
+            review = Review(
+                "Rahul",
+                "Fantastic place",
+                5
+            )
+        )
+    )
+
+    suspend fun getRestaurants(
+        authorization: String,
+        latitude: Double,
+        longitude: Double,
+        keyword: String
+    ): List<Restaurant> {
+        return restaurants
+    }
+
+    fun getFavouriteRestaurants(): List<Restaurant> {
+        return mutableListOf(
+            Restaurant(
+                "1",
+                "That place",
+                "30 abc dr. Pickering, ON",
+                isFavourite = true,
+                review = Review(
+                    "Rahul",
+                    "Fantastic place",
+                    5
+                )
+            )
+        )
     }
 
     suspend fun getReview(authorization: String, restaurant: Restaurant): Review? {
-        return Review("","",5)
+        return Review("", "", 5)
     }
 
     suspend fun updateRestaurantDetails(authorization: String, restaurant: Restaurant) {
@@ -51,7 +78,7 @@ object RestaurantsRepository {
 
     fun updateFavourite(restaurant: Restaurant) {
         restaurant.run {
-            if(isFavourite) addFavourite() else removeFavourite()
+            if (isFavourite) addFavourite() else removeFavourite()
         }
     }
 
