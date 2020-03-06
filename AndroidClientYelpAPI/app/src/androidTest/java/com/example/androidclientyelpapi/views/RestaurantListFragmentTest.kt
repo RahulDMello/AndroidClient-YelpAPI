@@ -17,7 +17,7 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
 @MediumTest
-class RestaurantFragmentsTest {
+class RestaurantListFragmentTest {
 
     @Test
     fun clickSearch_displayInRecycler() {
