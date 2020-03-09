@@ -2,7 +2,7 @@
 
 This project is an android client that communicates with Yelp's fusion API to fetch a list of nearby places - searched by a keyword. Additionally, It also provides details on the selected places such as its address, a photo and a review. Apart from yelp, it also utilizes shared preferences to keep track of your favourited places.
 
-![List Screen](/Assets/Images/list_screen.png "List Screen") ![Details Screen](/Assets/Images/details_screen.png "Details Screen")
+<img src="/Assets/Images/list_screen.png" alt="List Screen" width="250px">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/Assets/Images/details_screen.png" alt="Details Screen" width="250px">
 
 It follows a MVVM pattern along with a repository. The following is the description of the packages and classes:
 1. Views Package - Contains all the fragments.
