@@ -10,24 +10,25 @@
 
     <style name="TitleTextAppearance" parent="TextAppearance.AppCompat">
 
-        <item name="android:background">@color/secondaryColor</item>
+        <item name="android:background">@drawable/rounded_corner_shape</item>
         <item name="android:textSize">@dimen/title_text_size</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
     </style>
 
     <style name="SecondaryTextAppearance" parent="TextAppearance.AppCompat">
 
-        <item name="android:background">@color/secondaryTextColor</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:textSize">@dimen/regular_text_size</item>
-        <item name="android:textColor">@color/secondaryColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
     <style name="RegularTextAppearance" parent="TextAppearance.AppCompat">
 
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:background">@drawable/rounded_corner_shape_regular</item>
         <item name="android:textSize">@dimen/regular_text_size</item>
-        <item name="android:textColor">@color/secondaryDarkColor</item>
+
+        <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
 </resources>

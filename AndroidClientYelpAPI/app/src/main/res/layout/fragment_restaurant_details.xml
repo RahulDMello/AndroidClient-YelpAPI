@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/screenBackgroundColor"
         android:orientation="vertical">
 
         <TextView
@@ -29,7 +30,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="12dp"
+            android:layout_margin="15dp"
+
             android:adjustViewBounds="true"
             android:contentDescription="@{item.name + ` image`}"
             android:maxHeight="200dp"
@@ -39,6 +41,7 @@
             style="@style/RegularTextAppearance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:gravity="center_horizontal"
             android:padding="10dp"
             android:singleLine="false"
@@ -48,17 +51,30 @@
             style="@style/RegularTextAppearance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="1dp"
             android:contentDescription="@{`user` + item.review.userName}"
             android:gravity="start"
+            android:paddingTop="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="2dp"
             android:text="@{item.review.userName}" />
 
         <TextView
             style="@style/RegularTextAppearance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="15dp"
             android:gravity="start"
+            android:paddingBottom="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="2dp"
             android:singleLine="false"
             android:text="@{item.review.comment}" />
 
@@ -68,10 +84,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
             android:checked="@={item.favourite}"
             android:drawableStart="@drawable/star_selector"
             android:drawablePadding="5dp"
             android:padding="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:textOff="@string/favourite_toggle_textOff"
             android:textOn="@string/favourite_toggle_textOn" />
     </LinearLayout>

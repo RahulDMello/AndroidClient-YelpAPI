@@ -13,33 +13,43 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/screenBackgroundColor"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/shape_rectangle"
+            android:orientation="horizontal"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp">
 
             <EditText
                 android:id="@+id/searchTxt"
-                android:hint="@string/search_textview_hint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="@string/search_textview_hint" />
 
             <Button
                 android:id="@+id/searchBtn"
-                android:text="@string/search_button_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rectangle_border"
+                android:textSize="@dimen/regular_text_size"
+                android:text="@string/search_button_text" />
 
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/restaurantsList"
-            android:contentDescription="@string/restaurant_recycler_contentdescription"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:contentDescription="@string/restaurant_recycler_contentdescription" />
 
     </LinearLayout>
 
