@@ -7,7 +7,7 @@ This project is an android client that communicates with Yelp's fusion API to fe
 It follows a MVVM pattern along with a repository. The following is the description of the packages and classes:
 1. Views Package - Contains all the fragments.
 2. ViewModels package - Contains all the ViewModels. For the current features and funtionalities, there is only 1 viewmodel shared between both the fragments.
-3. Tools package - Any class additional classes required that does not deal with data or network calls.
+3. Tools package - Any additional classes required that does not deal with data or network calls.
   1. RetaurantsAdapter - List adapter for recycler on the list screen.
   2. SavedLocation - Singleton that keeps the last saved location from google play. Needs the permission ACCESS_COARSE_LOCATION
 4. Service package - Has packages and classes related to read and write of persistent data. It communicates with network for the yelp api and shared preferences to keep track of user's favourite places.
